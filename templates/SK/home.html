@@ -309,21 +309,23 @@
 
   <!-- Photo calendar -->
 
+   {% for event in calendar %}
   <div class="text">
     <h1 style="font-weight: 100 ;font-family: Verdana, sans-serif; margin-bottom: 0.5dvw">
-      Fotokalendár na rok 2025
+      {{ event.title_SK }}
     </h1>
   </div>
 
   <div class="slider-container">
     <img class="slider-image" href="gallery.html"
-      src="https://drive.google.com/thumbnail?id=1WvAlsun8zqkru9b-FVPYP0Q-rFbRa-MB&sz=w1000"
+      src="{{ event.src }}"
       alt="Something went wrong" />
   </div>
 
   <div class="text">
-    <h2 style="margin-top: 0.1dvw;">Autorský kalendár z fotiek z roku 2024</h2>
+    <h2 style="margin-top: 0.1dvw;"> {{ event.subtitle_SK }} </h2>
   </div>
+  {% endfor %}
 
   <div class="linker">
     <a href="calendar.html" target="_self" style="font-size: 25px;">Prezrieť si kalendár</a>
@@ -344,7 +346,7 @@
   <div class="invisible-field-smallest"></div>
 
   <div class="linker">
-    <a href="Author_FINAL.html" target="_self" style="font-size: 25px;">Niečo o mne</a>
+    <a href="author.html" target="_self" style="font-size: 25px;">Niečo o mne</a>
   </div>
 
  {% include "EN/footer.html" %}
@@ -353,28 +355,17 @@
 
   <script>
     // Image URLs for the first slider
-    const images1 = [
-      "https://drive.google.com/thumbnail?id=1aqTjuA52nMiuTOgx4fcBr6FEIGdxHqLv&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1wX0aOjKhgUmvj7a24dmPcP8kBtrDoSpZ&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1F5iKYJ89vlQ2R0qX6uoXo5hlGtEQhSue&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1niUx0VPRlEkoWFOgm5rq3X1fIKbhjtJE&sz=w1500",
-      "https://drive.google.com/thumbnail?id=13y5TNiQErsllRx4-RvZ4L8Y0pVTKNJA5&sz=w1500",
+      const images1 = [
+      {% for photo in photos %}
+        "{{ photo.src }}"{% if not forloop.last %},{% endif %}
+      {% endfor %}
     ];
 
     // Image URLs for the second slider
     const images2 = [
-      "https://drive.google.com/thumbnail?id=1gmWXAikeMtcadtYo7UL8RWgTBCWrYMTU&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1mq7Nr8DOxesWo0f4G2yTFLaIE_mEcS20&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1FPCN8e2kNr4o47_MbYy3dG7s_id4wEVy&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1auhXgQRZusracPhUd7EBE7_FYYEdxyQG&sz=w3000	",
-      "https://drive.google.com/thumbnail?id=1V0QB92ujkiQS3dstGvBAzEcNpuCXZpjC&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1eRfUCQU5XD0hWYsAJ_Pna-tQVqLYuaPZ&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1tp-eXj5oPk1mrLNKn40lygdBXX3KgRol&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1RnC6I2Z2gjxmeF_j2Lv-AGANRg7zdhmX&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1HFYlQQ4WiUoAOSwQEU_NazCffppHW5l9&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1jxkE156FQL_T8rJYo1X5YI4csGcOOitt&sz=w1500",
-      "https://drive.google.com/thumbnail?id=1gKUrO4HHYQsXVU3Q8p6FMagDnmw3fPKD&sz=w1500",
-      "https://drive.google.com/thumbnail?id=19B4OwuGUSUpj1Y-SEQJuwJC06xiOD64c&sz=w2000",
+      {% for slide in photos2 %}
+        "{{ slide.src }}"{% if not forloop.last %},{% endif %}
+      {% endfor %}
     ];
 
     let currentIndex1 = 0;

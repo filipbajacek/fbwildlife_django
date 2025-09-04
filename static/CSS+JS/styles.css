@@ -157,3 +157,9 @@
        background-color: #e7c885;
        color: #000;
    }
+
+   .custom-footer {
+       width: 100%;
+       height: 200px;
+       border: none;
+   }
