@@ -42,7 +42,7 @@
         <div class="gallery-grid" id="gallery-pc">
 
             {% for photo in photos %}
-            <a href="{{ photo.src }}"
+            <a href="https://drive.google.com/thumbnail?id={{ photo.src }}&sz=w1000"
                data-lightbox="gallery"
                data-alt="Photo"
                data-title="{{ photo.title_EN }}"
@@ -69,7 +69,7 @@
         <div class="dream" id="gallery-mob">
 
             {% for photo in photos %}
-            <a href="{{ photo.src }}"
+            <a href="https://drive.google.com/thumbnail?id={{ photo.src }}&sz=w1000"
                data-lightbox="gallery"
                data-alt="Photo"
                data-title="{{ photo.title_EN }}"
